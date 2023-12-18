@@ -15,18 +15,18 @@ getMovies(API_URL)
 async function getMovies(url) {
   const res = await fetch(url)
   const data = await res.json()
-  showMovies(data.results)
+  showMovies(data?.results)
 }
 
 const showMovies = (movies) => {
-  main.innerHTML = ''
+  main?.innerHTML = ''
 
-  movies.forEach((movie) => {
+  movies?.forEach((movie) => {
     const { title, poster_path, vote_average, overview } = movie
 
     const movieEl = document.createElement('div')
-    movieEl.classList.add('movie')
-    movieEl.innerHTML = `
+    movieEl?.classList?.add('movie')
+    movieEl?.innerHTML = `
     <div class="movie">
     <img src="${IMG_PATH + poster_path}" alt="${title}">
     <div class="movie-info">
@@ -57,7 +57,7 @@ const getClassByRate = (vote) => {
 form.addEventListener('submit', (e) => {
   e.preventDefault()
 
-  const searchTerm = search.value
+  const searchTerm = search?.value
 
   if (searchTerm && searchTerm !== '') {
     getMovies(SEARCH_API + searchTerm)
